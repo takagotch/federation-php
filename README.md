@@ -2,7 +2,7 @@
 ---
 https://github.com/ripple-unmaintained/federation-php
 
-```
+```json
 {
   "example.com" : {
     "bob" : "xxx"
@@ -33,8 +33,21 @@ function run()
   $doamin = strtolower($_GET['domain']);
 }
 >
-```
+
+
+
+
+
+
+
+
+
+
+
+
 
 ```
+
+```sh
 ```
 
