@@ -32,17 +32,37 @@ function run()
   
   $doamin = strtolower($_GET['domain']);
   
-  if () {}
+  if (!isset($data->{$domain})) {
+    send_error('noSuchDomain', 'The supplied domain is not served here.');
+  }
   
   $users = $data->{$domain};
   
   $visited = array();
-  while () {}
+  while (is_string($users)) {
+    if(!isset($data->[$users])) {
+      send_error('unvalidable', 'Misconfigured domain alias.');
+    }
+    
+    if(isset($visited[$users])) {
+      send_error('unvalidable', 'Circular domain alias.');
+    } else {
+      $visited[$users] = true;
+    }
+    
+    $users = $data->{$users};
+  }
   
-  if () {}
+  if (isset($_GET['destination']) && strlen($_GET['destination'])) {
+    $user = strtolower($_GET['destination']);
+  } elseif (isset($GET['user']) && strlen($_GET['user'])) {
+    $user = strtolower($_GET['user']);
+  } else {
+    send_error('invalidParams', 'No username provided.');
+  }
   
   if (!isset($user->{$user})) {
-    send_error('noSuchUser', 'The supplied user was not found.')
+    send_error('noSuchUser', 'The supplied user was not found.');
   }
   
   $result['federatikon_json'] = array(
